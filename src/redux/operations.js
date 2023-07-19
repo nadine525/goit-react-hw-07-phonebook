@@ -12,5 +12,3 @@ export const getContacts = createAsyncThunk(
     }
   }
 );
-
-console.log(getContacts());

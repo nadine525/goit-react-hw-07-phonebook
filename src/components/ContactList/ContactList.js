@@ -7,7 +7,7 @@ import * as contactsOperations from '../../redux/operations';
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);
-  console.log(contacts);
+  // console.log(contacts);
   const filter = useSelector(getFilter);
 
   const dispatch = useDispatch();
@@ -15,6 +15,8 @@ const ContactList = () => {
   useEffect(() => {
     dispatch(contactsOperations.getContacts());
   }, [dispatch]);
+
+  console.log(contacts);
 
   const getVisibleContacts = () => {
     const normalazedFilter = filter.toLowerCase();
