@@ -23,16 +23,15 @@ const contactsSlice = createSlice({
     },
   },
 
-  extraReducers: builder => {
+  extraReducers: builder =>
     builder
       .addCase(getContacts.pending, handlePending)
       .addCase(getContacts.fulfilled, (state, action) => {
-        state.items = action.payload;
         state.isLoading = false;
+        state.items = action.payload;
         state.error = null;
       })
-      .addCase(getContacts.rejected, handleRejected);
-  },
+      .addCase(getContacts.rejected, handleRejected),
 });
 
 export const { addContact, deleteContact } = contactsSlice.actions;
