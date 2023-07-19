@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContactElement from '../ContactElement';
 import { List } from './ContactList.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
+import * as contactsOperations from '../../redux/operations';
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);
   console.log(contacts);
   const filter = useSelector(getFilter);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(contactsOperations.getContacts());
+  }, [dispatch]);
 
   const getVisibleContacts = () => {
     const normalazedFilter = filter.toLowerCase();
