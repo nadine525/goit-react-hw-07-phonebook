@@ -12,3 +12,15 @@ export const getContacts = createAsyncThunk(
     }
   }
 );
+
+export const addContact = createAsyncThunk(
+  `contacts/postContact`,
+  async (_, { rejectWithValue }) => {
+    try {
+      const contact = await contactsAPI.addContact();
+      return contact;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
