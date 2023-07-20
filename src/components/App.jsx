@@ -27,7 +27,7 @@ export function App() {
       <Filter />
       {isError ? toast.error('Sorry! There is an error.') : <ContactList />}
       {isLoadingFlag && <Loader />}
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={3000} limit={1} theme='dark' />
     </Division>
   )
 };
