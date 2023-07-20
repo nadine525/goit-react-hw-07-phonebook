@@ -2,12 +2,11 @@ import { useEffect } from 'react';
 import ContactElement from '../ContactElement';
 import { List } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectFilter } from '../../redux/selectors';
+import { selectVisibleContacts } from '../../redux/selectors';
 import * as contactsOperations from '../../redux/operations';
 
 const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   const dispatch = useDispatch();
 
@@ -15,17 +14,7 @@ const ContactList = () => {
     dispatch(contactsOperations.getContacts());
   }, [dispatch]);
 
-  console.log(contacts);
-
-  const getVisibleContacts = () => {
-    const normalazedFilter = filter.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalazedFilter)
-    );
-  };
-
-  const visibleContacts = getVisibleContacts();
+  // console.log(contacts);
 
   return (
     <List>
