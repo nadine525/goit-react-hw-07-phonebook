@@ -4,7 +4,7 @@ import Filter from './Filter';
 import Loader from './Loader';
 
 import { Division } from './App.styled';
-import { isLoading} from 'redux/selectors';
+import { selectIsLoading} from 'redux/selectors';
 
 import { useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 
 export function App() {
-  const isLoadingFlag = useSelector(isLoading);
+  const isLoadingFlag = useSelector(selectIsLoading);
 
 
   return (
