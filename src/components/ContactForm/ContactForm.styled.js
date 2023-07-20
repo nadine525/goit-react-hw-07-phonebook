@@ -10,6 +10,7 @@ export const Form = styled.form`
   flex-wrap: nowrap;
   align-items: center;
   gap: 10px;
+  margin-bottom: 20px;
 `;
 
 export const Label = styled.label`
