@@ -5,13 +5,13 @@ import { Contact, Person } from './ContactElement.styled';
 import { Button } from '../ContactForm/ContactForm.styled';
 import { iconSize } from '../constans';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import * as contactsOperations from '../../redux/operations';
 
 const ContactElement = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = contactId => {
-    dispatch(deleteContact(contactId));
+    dispatch(contactsOperations.deleteContact(contactId));
   };
 
   return (
