@@ -4,6 +4,7 @@ import { Form, Label, Input, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import * as contactsOperations from '../../redux/operations';
+import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -40,7 +41,7 @@ export const ContactForm = () => {
         contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
       )
     ) {
-      return alert(`${newContact.name} is already in the contact list`);
+      return toast.warning(`${newContact.name} is already in the contact list`);
     }
 
     dispatch(contactsOperations.addContact(newContact));
