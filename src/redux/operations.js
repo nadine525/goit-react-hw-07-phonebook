@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as contactsAPI from '../services/contacts-api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const getContacts = createAsyncThunk(
   `contacts/getContacts`,
@@ -8,6 +10,7 @@ export const getContacts = createAsyncThunk(
       const contacts = await contactsAPI.fetchContacts();
       return contacts;
     } catch (error) {
+      toast.error('Sorry! There is an error.');
       return rejectWithValue(error);
     }
   }
@@ -20,6 +23,7 @@ export const addContact = createAsyncThunk(
       const contact = await contactsAPI.addContact(newContact);
       return contact;
     } catch (error) {
+      toast.error('Sorry! There is an error.');
       return rejectWithValue(error);
     }
   }
@@ -34,6 +38,7 @@ export const deleteContact = createAsyncThunk(
 
       return deletedContact.id;
     } catch (error) {
+      toast.error('Sorry! There is an error.');
       return rejectWithValue(error);
     }
   }
